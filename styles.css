@@ -1,0 +1,245 @@
+:root {
+  --header-bg: #b7e9d0;
+  --row-dark: #0f2a4f;
+  --row-light: #1b3b68;
+  --text-main: #f8fbff;
+  --text-strong: #ffffff;
+  --muted: #bdd1f4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #071834;
+  color: var(--text-main);
+}
+
+.board {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.board-header {
+  background: var(--header-bg);
+  color: #0a2251;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.6rem;
+  gap: 1rem;
+}
+
+.brand-block {
+  display: grid;
+  align-items: baseline;
+  grid-template-columns: auto auto;
+  column-gap: 1rem;
+}
+
+.brand {
+  font-size: clamp(1.5rem, 2vw, 2.3rem);
+  font-weight: 700;
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.station {
+  margin: 0.2rem 0 0;
+  grid-column: 1 / span 2;
+  font-size: clamp(1rem, 2vw, 2.4rem);
+  font-weight: 700;
+}
+
+.clock-block {
+  text-align: right;
+}
+
+#clock {
+  margin: 0;
+  font-size: clamp(2rem, 4.5vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.track-label {
+  margin: 0.1rem 0 0;
+  font-size: clamp(1rem, 2vw, 2rem);
+  font-weight: 700;
+}
+
+.departures {
+  display: flex;
+  flex-direction: column;
+}
+
+.departure-head,
+.departure-row {
+  display: grid;
+  grid-template-columns: minmax(110px, 190px) 1fr minmax(95px, 170px) minmax(100px, 140px) minmax(90px, 130px);
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem 1.6rem;
+}
+
+.departure-head {
+  background: #112a4c;
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+}
+
+.departure-head p {
+  margin: 0;
+}
+
+.departure-row:nth-child(odd) {
+  background: var(--row-light);
+}
+
+.departure-row:nth-child(even) {
+  background: var(--row-dark);
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.time {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.2vw, 3.8rem);
+  font-weight: 700;
+  color: var(--text-strong);
+  line-height: 1;
+}
+
+.countdown {
+  margin: 0.2rem 0 0;
+  font-size: clamp(0.85rem, 1.5vw, 1.4rem);
+  color: var(--muted);
+}
+
+.destination {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.5vw, 3rem);
+  font-weight: 650;
+  color: var(--text-strong);
+}
+
+.stops {
+  margin: 0.1rem 0 0;
+  font-size: clamp(0.9rem, 1.4vw, 1.5rem);
+}
+
+.status {
+  margin: 0.2rem 0 0;
+  font-size: clamp(0.9rem, 1.35vw, 1.4rem);
+  color: #ffe58f;
+  font-weight: 600;
+}
+
+.line-pill {
+  justify-self: stretch;
+  text-align: center;
+  border-radius: 12px;
+  padding: 0.45rem 0.7rem;
+  font-size: clamp(1rem, 1.6vw, 1.9rem);
+  font-weight: 800;
+  margin: 0;
+}
+
+.line-r1 {
+  background: linear-gradient(120deg, #017fdd, #00b1ff);
+}
+
+.line-r2,
+.line-r2s {
+  background: linear-gradient(120deg, #45ad22, #95d626);
+  color: #132e07;
+}
+
+.line-r4 {
+  background: linear-gradient(120deg, #f9b509, #f8da24);
+  color: #4e3300;
+}
+
+.service,
+.platform {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1.2rem, 2.2vw, 2.4rem);
+  font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+  .departure-head {
+    display: none;
+  }
+
+  .departure-row {
+    grid-template-columns: 110px 1fr 95px 90px;
+    grid-template-areas:
+      "time route line platform"
+      "time route service platform";
+  }
+
+  .time-block {
+    grid-area: time;
+  }
+
+  .route {
+    grid-area: route;
+  }
+
+  .line-pill {
+    grid-area: line;
+  }
+
+  .service {
+    grid-area: service;
+    text-align: left;
+  }
+
+  .platform {
+    grid-area: platform;
+  }
+}
+
+@media (max-width: 760px) {
+  .board-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .clock-block {
+    text-align: left;
+  }
+
+  .departure-row {
+    grid-template-columns: 95px 1fr;
+    grid-template-areas:
+      "time route"
+      "line service"
+      "platform platform";
+    gap: 0.5rem 0.8rem;
+  }
+
+  .line-pill,
+  .service,
+  .platform {
+    text-align: left;
+  }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RodalieSIm | Sortides</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="board" aria-label="Panel de salidas RodalieSIm">
+    <header class="board-header">
+      <div class="brand-block">
+        <p class="brand">RodalieSIm</p>
+        <h1>Sortides</h1>
+        <p class="station">Estació de Barcelona Sants</p>
+      </div>
+      <div class="clock-block" aria-live="polite">
+        <p id="clock">00:00:00</p>
+        <p class="track-label">Via</p>
+      </div>
+    </header>
+
+    <section class="departures" aria-label="Listado de salidas">
+      <div class="departure-head">
+        <p>Hora</p>
+        <p>Destino y recorrido</p>
+        <p>Línea</p>
+        <p>Servicio</p>
+        <p>Via</p>
+      </div>
+      <div id="departures-list"></div>
+    </section>
+  </main>
+
+  <template id="departure-row-template">
+    <article class="departure-row">
+      <div class="time-block">
+        <p class="time">00:00</p>
+        <p class="countdown">en 0 min</p>
+      </div>
+      <div class="route">
+        <p class="destination"></p>
+        <p class="stops"></p>
+        <p class="status"></p>
+      </div>
+      <p class="line-pill"></p>
+      <p class="service"></p>
+      <p class="platform"></p>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
